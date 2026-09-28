@@ -1,0 +1,65 @@
+﻿@using BaiTapCongNgheWeb.Models
+
+@{
+    // Bài 1
+    DateTime today = DateTime.Now;
+
+    // Bài 2
+    var products = new List<Product>
+    {
+        new Product { Id = 1, Name = "Laptop", Price = 15000000 },
+        new Product { Id = 2, Name = "Điện thoại", Price = 8000000 },
+        new Product { Id = 3, Name = "Tai nghe", Price = 1500000 },
+        new Product { Id = 4, Name = "Bàn phím", Price = 1000000 }
+    };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bài tập Công nghệ Web</title>
+</head>
+
+<body>
+
+    <!-- BÀI 1 -->
+    <h1>Kiểm tra hôm nay</h1>
+
+    <p>Ngày hôm nay: @today.ToString("dd/MM/yyyy")</p>
+
+    @if (today.DayOfWeek == DayOfWeek.Saturday ||
+        today.DayOfWeek == DayOfWeek.Sunday)
+    {
+        <h2>Hôm nay là cuối tuần</h2>
+    }
+    else
+    {
+        <h2>Hôm nay không phải cuối tuần</h2>
+    }
+
+
+    <!-- BÀI 2 -->
+    <h1>Danh sách sản phẩm</h1>
+
+    <h2>Sản phẩm có những sản phẩm:</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+        </tr>
+
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price.ToString("N0") VNĐ</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
